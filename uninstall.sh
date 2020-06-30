@@ -10,7 +10,7 @@ error()
 
 [ -e "$1/ROOTFILES" ] || error "Error: package not installed, use install.sh"
 
-/etc/init.d/barios-fd stop
+/etc/init.d/bareos-fd stop
 
 while read file
 do

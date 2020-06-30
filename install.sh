@@ -28,6 +28,6 @@ done <<< "$(/bin/find)"
 
 /bin/mkdir -p /var/lib/bareos
 /sbin/ldconfig
-/etc/init.d/barios-fd start
+/etc/init.d/bareos-fd start
 
 popd
