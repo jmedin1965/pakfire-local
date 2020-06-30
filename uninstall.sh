@@ -10,7 +10,7 @@ error()
 
 [ -e "$1/ROOTFILES" ] || error "Error: package not installed, use install.sh"
 
-/etc/init.d/bareos-fd stop
+[ -x "./$1/pre-uninstall.sh" ] && "./$1/pre-uninstall.sh"
 
 while read file
 do
@@ -19,7 +19,10 @@ do
 done <<< "$(/bin/cat "$1/ROOTFILES")"
 
 /bin/rm -f "$1/ROOTFILES"
-/bin/rm -rf /var/lib/bareos
+
+[ -x "./$1/post-uninstall.sh" ] && "./$1/post-uninstall.sh"
+
+[ -z "$1" -o ! -d "$1" ] && error Usage $(/usr/bin/basename "$0") \<package\>
 
 /sbin/ldconfig
 

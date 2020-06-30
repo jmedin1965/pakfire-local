@@ -26,8 +26,7 @@ do
 	fi
 done <<< "$(/bin/find)"
 
-/bin/mkdir -p /var/lib/bareos
-/sbin/ldconfig
-/etc/init.d/bareos-fd start
+cd ..
+[ -x "./post-install.sh" ] && "./post-install.sh"
 
 popd
